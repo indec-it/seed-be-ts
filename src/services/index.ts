@@ -1,5 +1,5 @@
 import StatusService from './status';
 
 export {
-    StatusService
+    StatusService,
 };

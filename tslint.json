@@ -10,16 +10,16 @@
       "ordered-imports": false,
       "quotemark": [true, "single"],
       "variable-name": [true, "allow-leading-underscore"],
-      "no-console": "error",
+      "no-console": true,
       "indent": [
-        "error",
-        4,
+        true,
+        "4",
         {
           "SwitchCase": 1
         }
       ],
       "linebreak-style": [
-        "error",
+        true,
         "unix"
       ],
       "eol-last": [
@@ -44,6 +44,14 @@
       "lodash/matches-prop-shorthand": [
         "error",
         "never"
-      ]
+      ],
+      "interface-name": false,
+      "comma-dangle": ["error", {
+        "arrays": "never",
+        "objects": "never",
+        "imports": "never",
+        "exports": "never",
+        "functions": "never"
+      }]
     }
   }

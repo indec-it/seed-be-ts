@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 import dotenv from 'dotenv';
 import packageJson from '../../package.json';
 dotenv.config();
@@ -16,10 +16,10 @@ class Locals {
 		const year = (new Date()).getFullYear();
 		const copyright = `Copyright ${year} ${name} | All Rights Reserved`;
 		const company = process.env.COMPANY_NAME || 'GeekyAnts';
-        const description = process.env.APP_DESCRIPTION || 'Here goes the app description';
-        const NODE_ENV = process.env.NODE_ENV || 'production';
-        const DB_DRIVER = process.env.DB_DRIVER;
-        const DB_CONFIG = process.env.DB_CONFIG;
+  const description = process.env.APP_DESCRIPTION || 'Here goes the app description';
+  const NODE_ENV = process.env.NODE_ENV || 'production';
+  const DB_DRIVER = process.env.DB_DRIVER;
+  const DB_CONFIG = process.env.DB_CONFIG;
 		const isCORSEnabled = process.env.CORS_ENABLED || true;
 		const apiPrefix = process.env.API_PREFIX || 'api';
 
@@ -53,7 +53,7 @@ class Locals {
 			url,
 			queueMonitor,
             queueMonitorHttpPort,
-            NODE_ENV
+            NODE_ENV,
 		};
 	}
 }

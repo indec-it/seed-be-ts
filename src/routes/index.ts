@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 import {Router, Application} from 'express';
 
 import {authenticateMiddleware} from './middlewares';
@@ -20,11 +20,11 @@ import publicApi from './public-api';
  * <b> * </b> returns error page when not matching url can be found </br>
  */
 class Routes {
-    static configure(app: Application) {
+    public static configure(app: Application) {
         app.get('/ping', StatusController.ping);
         app.get('/ready', StatusController.getStatus);
         app.get('/health', StatusController.getHealth);
-        
+
         app.use('/api', authenticateMiddleware, api(Router()));
         app.use('/public-api', publicApi(Router()));
 

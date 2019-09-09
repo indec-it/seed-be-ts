@@ -1,4 +1,4 @@
-export default {
+module.exports = {
     rules: {
         'body-leading-blank': [1, 'always'],
         'footer-leading-blank': [1, 'always'],

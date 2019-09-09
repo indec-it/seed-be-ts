@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 class Mongoose {
-    static configure() {
+    public static configure() {
         const {DATABASE_URL} = process.env;
         mongoose.Promise = Promise;
         mongoose.connect(DATABASE_URL, {
@@ -13,15 +13,15 @@ class Mongoose {
             useNewUrlParser: true,
             socketTimeoutMS: 0,
             connectTimeoutMS: 0,
-            useCreateIndex: true
+            useCreateIndex: true,
         });
         mongoose.connection.once('open',
             () => logger.info(
-                'Mongoose connected'
-            )
+                'Mongoose connected',
+            ),
         );
         mongoose.connection.on('close', () => logger.info('connection closed'));
-        mongoose.connection.on('error', err => logger.error(`connection error ${err}`));
+        mongoose.connection.on('error', (err) => logger.error(`connection error ${err}`));
     }
 }
 

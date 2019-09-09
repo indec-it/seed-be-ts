@@ -2,12 +2,13 @@
 import {Request, Response, NextFunction} from 'express';
 import {split} from 'lodash';
 
+import errors from '../../helpers/error';
+
 /**
  * @todo
  *  Traer esto de heimdall y validar si el usuario esta habilitado.
  */
 // const {User} = require('../../models');
-const Errors = require('../../helpers/error');
 
 export default async (req: Request, res: Response, next: NextFunction) => {
     const header = req.get('Authorization');
@@ -16,7 +17,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
     }
     const token = split(header, /\s+/).pop();
     if (!token) {
-        return Errors.sendError(res);
+        return errors.sendError(res);
     }
 
     try {

@@ -10,7 +10,7 @@ export default (router: Router) => {
         (module, name) => {
             logger.info(`Loading ${name} api...`);
             router.use(`/${name}`, module(Router()));
-        }
+        },
     );
 
     return router;
