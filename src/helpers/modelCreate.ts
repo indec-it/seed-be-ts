@@ -53,7 +53,7 @@ const modelCreate = (Model: ModelType) => {
     const findAll = (columns = selectableProps, orderBy = ORDER_BY) => knex.select(columns)
         .from(tableName).orderBy(orderBy).timeout(timeout);
 
-    const findById = (id , columns = selectableProps, orderBy = ORDER_BY)=> knex.select(columns).from(tableName)
+    const findById = (id: string , columns = selectableProps, orderBy = ORDER_BY)=> knex.select(columns).from(tableName)
         .where({id}).orderBy(orderBy).timeout(timeout);
 
     const findByTerm = (termValue: string, termKeys: [string], filters: Object, columns = selectableProps) => {
@@ -74,7 +74,7 @@ const modelCreate = (Model: ModelType) => {
             return knexQuery;
         }
     };
-    const updateOne = async (filters: Object, props: Object) => {
+    const updateOne = async (filters: Object, props: {id: string, __v: number}) => {
         delete props.id;
         const object = await findOne(filters);
         if (object && object.__v !== undefined) {
@@ -110,11 +110,11 @@ const modelCreate = (Model: ModelType) => {
         return Promise.reject('not a valid array of data');
     };
 
-    const deletedOne = id => knex.update({deleted: true, deletedat: Date.now})
+    const deletedOne = (id: string) => knex.update({deleted: true, deletedat: Date.now})
         .from(tableName).where({id}).timeout(timeout);
     
-    const deletedMany = ids => {
-        if (isArray(ids) && String instanceof head(ids)) {
+    const deletedMany = (ids: any) => {
+        if (isArray(ids) && head(ids) instanceof String) {
             return knex.update({deleted: true, deletedat: Date.now})
                 .from(tableName).whereIn('id', ids).timeout(timeout);
         }
