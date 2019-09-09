@@ -1,6 +1,9 @@
 import knex from 'knex';
 import path from 'path';
 import Logger from './logger';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const {
     DB_DRIVER,
