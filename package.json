@@ -2,13 +2,14 @@
   "name": "type-be",
   "version": "0.0.1-SNAPSHOT",
   "description": "Backend Node With TypeScript",
-  "main": "build/start.js",
+  "main": "dist/start.js",
   "scripts": {
-    "clean": "rimraf build/*",
+    "clean": "rimraf dist/*",
     "lint": "tslint -c tslint.json -p tsconfig.json --fix",
     "dev": "nodemon --config \"./nodemon.json\"/",
-    "build": "clean && tsc",
-    "start": "node build/src/index.js"
+    "copy": "cp package.json dist/ && cp README.md dist/ && cp .nvmrc dist/ && cp -r public dist/ && cp .env dist/",
+    "build": "npm run lint && npm run clean && tsc && npm run copy",
+    "start": "npm run dist && node dist/src/index.js"
   },
   "author": "INDEC-IT",
   "license": "ISC",

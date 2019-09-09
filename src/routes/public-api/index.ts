@@ -14,7 +14,7 @@ export default (router: Router) => {
             } else {
                 router.use(`/${name}`, module(Router()));
             }
-        }
+        },
     );
 
     return router;

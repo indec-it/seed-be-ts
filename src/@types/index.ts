@@ -1,4 +1,4 @@
-import {Request} from "express"
+import {Request} from 'express';
 import Knex from 'knex';
 
 export interface RequestWithUser extends Request {
@@ -9,14 +9,14 @@ export interface RequestWithUser extends Request {
     surname: string,
     name: string,
     password: string,
-    enabled: boolean
-  }
-};
+    enabled: boolean,
+  };
+}
 
-export type ModelType = {
-  knex: Knex,
-  name: string,
-  tableName: string,
-  selectableProps: [string],
-  timeout: number
-};
+export interface ModelType {
+  knex: Knex;
+  name: string;
+  tableName: string;
+  selectableProps: [string];
+  timeout: number;
+}

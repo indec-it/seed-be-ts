@@ -3,5 +3,5 @@ import permission from './permission';
 
 export {
     authenticateMiddleware,
-    permission
-}
+    permission,
+};

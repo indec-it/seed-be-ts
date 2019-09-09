@@ -1,7 +1,7 @@
-'use strict'
+'use strict';
 import mongoose from 'mongoose';
 import {
-    every, concat
+    every, concat,
 } from 'lodash';
 
 import pkg from '../../package.json';
@@ -17,23 +17,23 @@ const generateStatus = (deps: any, optionalDeps: any = []) => ({
     name: pkg.name,
     status: every(deps, ({status: 'ok'}))
         ? every(optionalDeps, ({status: 'ok'})) ? 'ok' : 'degraded'
-        : 'down'
+        : 'down',
 });
 
 class StatusService {
-    static getStatus() {
+    public static getStatus() {
         return generateStatus([StatusService.getMongoDBStatus()]);
     }
 
-    static getHealth() {
+    public static getHealth() {
         return StatusService.getMongoDBStatus();
     }
 
-    static getMongoDBStatus() {
+    public static getMongoDBStatus() {
         const connected = mongoose.connection.readyState === 1;
         return {
             name: 'MongoDB',
-            status: connected ? 'ok' : 'down'
+            status: connected ? 'ok' : 'down',
         };
     }
 }

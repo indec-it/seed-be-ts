@@ -1,6 +1,6 @@
 'use strict';
 
-import {transports, format, createLogger, LoggerOptions} from "winston";
+import {transports, format, createLogger, LoggerOptions} from 'winston';
 import winston from 'winston';
 import packageJson from '../../package.json';
 import dotenv from 'dotenv';
@@ -12,7 +12,7 @@ const {
     timestamp,
     printf,
     colorize,
-    align
+    align,
 } = format;
 
 
@@ -20,17 +20,17 @@ const myCustomLevels = {
     levels: {
         error: 0,
         info: 2,
-        debug: 1
+        debug: 1,
     },
     colors: {
         error: 'red',
         info: 'green',
-        debug: 'yellow'
-    }
+        debug: 'yellow',
+    },
 };
 
-const customFormat = printf(info =>
-    `[${info.level} ${new Date(info.timestamp).toLocaleString()}] ${info.message}`
+const customFormat = printf((info) =>
+    `[${info.level} ${new Date(info.timestamp).toLocaleString()}] ${info.message}`,
 );
 
 winston.addColors(myCustomLevels.colors);
@@ -39,7 +39,7 @@ const formatter = combine(
     timestamp(),
     align(),
     colorize({ all: true }),
-    customFormat
+    customFormat,
 );
 
 const getTransports = () => {
@@ -50,13 +50,13 @@ const getTransports = () => {
             new transports.File({
                 filename: `/tmp/${packageJson.name}-debug.log`,
                 level: 'info',
-                handleExceptions: true
+                handleExceptions: true,
             }),
             new transports.File({
                 filename: `/tmp/${packageJson.name}-error.log`,
                 level: 'error',
-                handleExceptions: true
-            })
+                handleExceptions: true,
+            }),
         ];
     }
 
@@ -66,12 +66,12 @@ const getTransports = () => {
 const options: LoggerOptions = {
     format: formatter,
     levels: myCustomLevels.levels,
-    transports: getTransports()
-}
+    transports: getTransports(),
+};
 
 const logger = createLogger(options);
 
-if (process.env.NODE_ENV === "development") {
+if (process.env.NODE_ENV === 'development') {
     logger.add(new transports.Console());
 }
 

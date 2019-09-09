@@ -1,20 +1,20 @@
-'use strict'
+'use strict';
 import os from 'os';
 import cluster from 'cluster';
 
-import MainApp from './app';
-import NativeEvent from './helpers/nativeEvent';
+import mainApp from './app';
+import nativeEvent from './helpers/nativeEvent';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const App = new MainApp();
+const app = new mainApp();
 
 if (cluster.isMaster) {
-	NativeEvent.process();
+	nativeEvent.process();
 	const CPUS: any = os.cpus();
 	CPUS.forEach(() => cluster.fork());
-	NativeEvent.cluster(cluster);
-	App.loadQueue();
+	nativeEvent.cluster(cluster);
+	app.loadQueue();
 } else {
-	App.init();
+	app.init();
 }

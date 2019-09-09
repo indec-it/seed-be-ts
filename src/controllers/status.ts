@@ -1,11 +1,11 @@
-'use strict'
+'use strict';
 import { Request, Response, NextFunction } from 'express';
 
 import {StatusService} from '../services';
 import pkg from '../../package.json';
 
 class StatusController {
-    static ping(req: Request, res: Response, next: NextFunction) {
+    public static ping(req: Request, res: Response, next: NextFunction) {
         try {
             res.send({version: pkg.version});
         } catch (err) {
@@ -13,7 +13,7 @@ class StatusController {
         }
     }
 
-    static getStatus(req: Request, res: Response, next: NextFunction) {
+    public static getStatus(req: Request, res: Response, next: NextFunction) {
         try {
             res.send(StatusService.getStatus());
         } catch (err) {
@@ -21,7 +21,7 @@ class StatusController {
         }
     }
 
-    static async getHealth(req: Request, res: Response, next: NextFunction) {
+    public static async getHealth(req: Request, res: Response, next: NextFunction) {
         try {
             const status = await StatusService.getHealth();
             res.send(status);

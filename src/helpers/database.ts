@@ -7,7 +7,7 @@ dotenv.config();
 
 const {
     DB_DRIVER,
-    DB_CONFIG
+    DB_CONFIG,
 } = process.env;
 
 const basePath = `${path.normalize(`${__dirname}/../..`)}`;
@@ -17,19 +17,19 @@ const db = knex({
     connection: JSON.parse(DB_CONFIG),
     pool: {
         min: 0,
-        max: 20
+        max: 20,
     },
     migrations: {
         tableName: 'knex_migrations',
-        directory: `${basePath}/db/migrations`
+        directory: `${basePath}/db/migrations`,
     },
     seeds: {
-        directory: `${basePath}/db/seeds`
-    }
+        directory: `${basePath}/db/seeds`,
+    },
 });
 
 db.raw('SELECT \'test connection\';').then(() =>
-    Logger.info('database connected...')
+    Logger.info('database connected...'),
 ).catch(() => {
     Logger.error('database connection failed...');
 });
