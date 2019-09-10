@@ -10,11 +10,11 @@ dotenv.config();
 const app = new mainApp();
 
 if (cluster.isMaster) {
-	nativeEvent.process();
-	const CPUS: any = os.cpus();
-	CPUS.forEach(() => cluster.fork());
-	nativeEvent.cluster(cluster);
-	app.loadQueue();
+    nativeEvent.process();
+    const CPUS: any = os.cpus();
+    CPUS.forEach(() => cluster.fork());
+    nativeEvent.cluster(cluster);
+    app.loadQueue();
 } else {
-	app.init();
+    app.init();
 }

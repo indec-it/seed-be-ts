@@ -18,9 +18,8 @@ const modelCreate = (model: ModelType) => {
         tableName,
         selectableProps,
     } = model;
-    let {timeout} = model;
 
-    timeout = timeout || 10000;
+    const timeout = model.timeout || 10000;
 
     const jsonToString = (props: object) => {
         const objectToSave = {};

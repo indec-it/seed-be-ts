@@ -1,5 +1,14 @@
 {
     "extends": "tslint:recommended",
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": 2019,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": false
+      },
+      "project": "./tsconfig.json"
+    },
     "rules": {
       "max-line-length": {
         "options": [130]
@@ -11,13 +20,7 @@
       "quotemark": [true, "single"],
       "variable-name": [true, "allow-leading-underscore"],
       "no-console": true,
-      "indent": [
-        true,
-        "4",
-        {
-          "SwitchCase": 1
-        }
-      ],
+      "indent": [true, "spaces", 4],
       "linebreak-style": [
         true,
         "unix"
@@ -46,12 +49,6 @@
         "never"
       ],
       "interface-name": false,
-      "comma-dangle": ["error", {
-        "arrays": "never",
-        "objects": "never",
-        "imports": "never",
-        "exports": "never",
-        "functions": "never"
-      }]
+      "comma-dangle": ["never"]
     }
   }

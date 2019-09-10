@@ -1,8 +1,10 @@
+'use strict';
 
-import {Request, Response, NextFunction} from 'express';
+import {Response, NextFunction} from 'express';
 import {split} from 'lodash';
 
 import errors from '../../helpers/error';
+import {RequestWithUser} from '../../@types/index';
 
 /**
  * @todo
@@ -10,12 +12,12 @@ import errors from '../../helpers/error';
  */
 // const {User} = require('../../models');
 
-export default async (req: Request, res: Response, next: NextFunction) => {
-    const header = req.get('Authorization');
+export default async (req: RequestWithUser, res: Response, next?: NextFunction) => {
+    const header: string = req.get('Authorization');
     if (!header) {
         return res.sendStatus(401);
     }
-    const token = split(header, /\s+/).pop();
+    const token: string = split(header, /\s+/).pop();
     if (!token) {
         return errors.sendError(res);
     }

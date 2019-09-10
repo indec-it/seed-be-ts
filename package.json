@@ -8,7 +8,7 @@
     "lint": "tslint -c tslint.json -p tsconfig.json --fix",
     "dev": "nodemon --config \"./nodemon.json\"/",
     "copy": "cp package.json dist/ && cp README.md dist/ && cp .nvmrc dist/ && cp -r public dist/ && cp .env dist/",
-    "build": "npm run lint && npm run clean && tsc && npm run copy",
+    "dist": "npm run lint && npm run clean && tsc && npm run copy",
     "start": "npm run dist && node dist/src/index.js"
   },
   "author": "INDEC-IT",

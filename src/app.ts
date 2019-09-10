@@ -60,17 +60,17 @@ class App {
     }
 
     public loadQueue(): void {
-		const isQueueMonitorEnabled: boolean = Locals.config().queueMonitor;
-		const queueMonitorPort: number = Locals.config().queueMonitorHttpPort;
+        const isQueueMonitorEnabled: boolean = Locals.config().queueMonitor;
+        const queueMonitorPort: number = Locals.config().queueMonitorHttpPort;
 
-		if (isQueueMonitorEnabled) {
-			Log.info(`Queue Monitor :: Running @ 'http://localhost:${queueMonitorPort}'`);
-		}
+        if (isQueueMonitorEnabled) {
+            Log.info(`Queue Monitor :: Running @ 'http://localhost:${queueMonitorPort}'`);
+        }
     }
 
     public loadWorker(): void {
-		Log.info('Worker :: Booting @ Master...');
-	}
+        Log.info('Worker :: Booting @ Master...');
+    }
 }
 
 export default App;

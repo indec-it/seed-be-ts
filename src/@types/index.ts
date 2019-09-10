@@ -3,13 +3,13 @@ import Knex from 'knex';
 
 export interface RequestWithUser extends Request {
   user: {
-    sub: string,
-    id: string,
-    roles: [string],
-    surname: string,
-    name: string,
-    password: string,
-    enabled: boolean,
+    sub: string;
+    id: string;
+    roles?: [string];
+    surname: string;
+    name: string;
+    password: string;
+    enabled: boolean;
   };
 }
 
@@ -18,5 +18,5 @@ export interface ModelType {
   name: string;
   tableName: string;
   selectableProps: [string];
-  timeout: number;
+  timeout?: number ;
 }
